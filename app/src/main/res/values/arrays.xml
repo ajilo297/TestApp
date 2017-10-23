@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dataArray">
+        <item>Hello</item>
+        <item>This</item>
+        <item>Bye</item>
+        <item>Heaven</item>
+        <item>Axe</item>
+        <item>Vangelico</item>
+    </string-array>
+</resources>
