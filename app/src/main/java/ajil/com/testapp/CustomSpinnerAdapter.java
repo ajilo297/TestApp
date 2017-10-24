@@ -15,13 +15,11 @@ import java.util.ArrayList;
  */
 
 public class CustomSpinnerAdapter extends BaseAdapter{
-    private Context context;
     private ArrayList<DataModel> models;
     private DBHelper dbHelper;
     private OnDataChangedListener dataChangedListener;
 
-    public CustomSpinnerAdapter(Context context, ArrayList<DataModel> models) {
-        this.context = context;
+    private CustomSpinnerAdapter(Context context, ArrayList<DataModel> models) {
         this.models = models;
         this.dbHelper = new DBHelper(context);
         dataChangedListener = (OnDataChangedListener) context;
@@ -48,15 +46,20 @@ public class CustomSpinnerAdapter extends BaseAdapter{
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.spinner_detail_item, parent, false);
         ImageView imageView = v.findViewById(R.id.image);
         TextView textView = v.findViewById(R.id.text);
-        imageView.setVisibility(View.VISIBLE);
-        textView.setText(models.get(position).getName());
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dbHelper.deleteModel(models.get(position));
-                dataChangedListener.onChanged();
-            }
-        });
+        if (position == 0) {
+            imageView.setVisibility(View.GONE);
+            textView.setText(R.string.select_item);
+        } else {
+            imageView.setVisibility(View.VISIBLE);
+            textView.setText(models.get(position - 1).getName());
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dbHelper.deleteModel(models.get(position - 1));
+                    dataChangedListener.onChanged();
+                }
+            });
+        }
         return v;
     }
 
@@ -66,7 +69,11 @@ public class CustomSpinnerAdapter extends BaseAdapter{
         ImageView imageView = v.findViewById(R.id.image);
         TextView textView = v.findViewById(R.id.text);
         imageView.setVisibility(View.GONE);
-        textView.setText(models.get(i).getName());
+        if (i == 0) {
+            textView.setText(R.string.select_item);
+        } else {
+            textView.setText(models.get(i - 1).getName());
+        }
         return v;
     }
 }
