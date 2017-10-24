@@ -6,4 +6,5 @@ package ajil.com.testapp;
 
 public interface OnDataChangedListener {
     void onChanged();
+    void onRemovePressed();
 }
