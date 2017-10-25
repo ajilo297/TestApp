@@ -1,4 +1,4 @@
-package ajil.com.testapp;
+package ajil.com.testapp.spinner;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import ajil.com.testapp.R;
 
 /**
  * Created by ajilo on 23-10-2017.

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "ajil.com.testapp"
         minSdkVersion 19
@@ -22,7 +22,16 @@ android {
 allprojects {
     repositories {
         jcenter()
-        maven{
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+allprojects{
+    repositories {
+        jcenter()
+        maven {
             url "https://maven.google.com"
         }
     }

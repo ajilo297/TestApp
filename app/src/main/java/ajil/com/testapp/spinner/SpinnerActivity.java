@@ -1,4 +1,4 @@
-package ajil.com.testapp;
+package ajil.com.testapp.spinner;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+
+import ajil.com.testapp.R;
 
 public class SpinnerActivity extends AppCompatActivity implements OnDataChangedListener {
 

@@ -1,4 +1,4 @@
-package ajil.com.testapp;
+package ajil.com.testapp.spinner;
 
 import android.content.ContentValues;
 import android.content.Context;
