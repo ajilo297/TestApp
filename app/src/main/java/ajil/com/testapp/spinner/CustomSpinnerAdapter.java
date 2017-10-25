@@ -1,6 +1,7 @@
 package ajil.com.testapp.spinner;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +18,18 @@ import ajil.com.testapp.R;
  */
 
 public class CustomSpinnerAdapter extends BaseAdapter{
-    private Context context;
     private ArrayList<DataModel> models;
     private DBHelper dbHelper;
     private OnDataChangedListener dataChangedListener;
+    private Context context;
+    private Boolean animate;
 
-    public CustomSpinnerAdapter(Context context, ArrayList<DataModel> models) {
-        this.context = context;
+    CustomSpinnerAdapter(Context context, ArrayList<DataModel> models, Boolean animate) {
         this.models = models;
         this.dbHelper = new DBHelper(context);
         dataChangedListener = (OnDataChangedListener) context;
+        this.context = context;
+        this.animate = animate;
     }
 
     @Override
@@ -51,14 +54,31 @@ public class CustomSpinnerAdapter extends BaseAdapter{
         ImageView imageView = v.findViewById(R.id.image);
         TextView textView = v.findViewById(R.id.text);
         imageView.setVisibility(View.VISIBLE);
-        textView.setText(models.get(position).getName());
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dbHelper.deleteModel(models.get(position));
-                dataChangedListener.onChanged();
+        if (position == 0) {
+            imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_remove_black_24dp));
+            textView.setText(R.string.select_item);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dataChangedListener.onRemovePressed();
+                }
+            });
+        } else {
+            imageView.setAlpha(0f);
+            if (animate) {
+                imageView.animate().alpha(1f).setDuration(400);
+                imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_delete_black_24dp));
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dbHelper.deleteModel(models.get(position - 1));
+                        dataChangedListener.onChanged();
+                    }
+                });
             }
-        });
+            textView.setText(models.get(position - 1).getName());
+
+        }
         return v;
     }
 
@@ -68,7 +88,11 @@ public class CustomSpinnerAdapter extends BaseAdapter{
         ImageView imageView = v.findViewById(R.id.image);
         TextView textView = v.findViewById(R.id.text);
         imageView.setVisibility(View.GONE);
-        textView.setText(models.get(i).getName());
+        if (i == 0) {
+            textView.setText(R.string.select_item);
+        } else {
+            textView.setText(models.get(i - 1).getName());
+        }
         return v;
     }
 }

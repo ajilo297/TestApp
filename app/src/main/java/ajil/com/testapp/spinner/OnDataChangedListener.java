@@ -6,4 +6,5 @@ package ajil.com.testapp.spinner;
 
 public interface OnDataChangedListener {
     void onChanged();
+    void onRemovePressed();
 }
