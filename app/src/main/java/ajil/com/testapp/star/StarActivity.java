@@ -1,4 +1,4 @@
-package ajil.com.testapp;
+package ajil.com.testapp.star;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+
+import ajil.com.testapp.R;
 
 public class StarActivity extends AppCompatActivity {
 

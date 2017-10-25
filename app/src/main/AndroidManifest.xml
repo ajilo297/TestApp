@@ -12,7 +12,7 @@
         <activity android:name=".spinner.SpinnerActivity">
 
         </activity>
-        <activity android:name=".StarActivity">
+        <activity android:name=".star.StarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
