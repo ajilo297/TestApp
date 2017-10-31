@@ -28,7 +28,7 @@ allprojects {
     }
 }
 
-allprojects{
+allprojects {
     repositories {
         jcenter()
         maven {
