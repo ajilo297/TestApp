@@ -29,7 +29,7 @@ public class SpinnerActivity extends AppCompatActivity implements OnDataChangedL
 
         models = dbHelper.getAllData();
 
-        adapter = new CustomSpinnerAdapter(context, models);
+        adapter = new CustomSpinnerAdapter(context, models,false);
         spinner.setAdapter(adapter);
     }
 
@@ -51,10 +51,15 @@ public class SpinnerActivity extends AppCompatActivity implements OnDataChangedL
     public void onChanged() {
         models = dbHelper.getAllData();
         if (models.size() == 0) {
-            adapter = new CustomSpinnerAdapter(context, new ArrayList<DataModel>());
+            adapter = new CustomSpinnerAdapter(context, new ArrayList<DataModel>(),false);
         }else {
-            adapter = new CustomSpinnerAdapter(context, models);
+            adapter = new CustomSpinnerAdapter(context, models, false);
         }
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void onRemovePressed() {
+
     }
 }
