@@ -7,11 +7,16 @@
     tools:context="ajil.com.testapp.EditTextImeActivity">
 
     <EditText
+        android:id="@+id/textView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:gravity="top"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="textMultiLine"
+        android:hint="random text"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintRight_toRightOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
