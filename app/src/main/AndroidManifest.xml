@@ -10,11 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".spinner.SpinnerActivity" />
-        <activity android:name=".star.StarActivity">
+        <activity android:name=".star.StarActivity" />
+        <activity android:name=".ConstraintIssue" />
+        <activity android:name=".ConstraintPercent"></activity>
+        <activity android:name=".LayoutScaleTestActivity">
 
         </activity>
-        <activity android:name=".ConstraintIssue" />
-        <activity android:name=".ConstraintPercent">
+        <activity android:name=".EditTextImeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
