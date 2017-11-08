@@ -12,11 +12,12 @@
         <activity android:name=".spinner.SpinnerActivity" />
         <activity android:name=".star.StarActivity" />
         <activity android:name=".ConstraintIssue" />
-        <activity android:name=".ConstraintPercent"></activity>
-        <activity android:name=".LayoutScaleTestActivity">
+        <activity android:name=".ConstraintPercent" />
+        <activity android:name=".LayoutScaleTestActivity"></activity>
+        <activity android:name=".EditTextImeActivity">
 
         </activity>
-        <activity android:name=".EditTextImeActivity">
+        <activity android:name=".DateCheckActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
