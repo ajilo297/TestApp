@@ -9,7 +9,9 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class DateCheckActivity extends AppCompatActivity {
 
@@ -32,14 +34,28 @@ public class DateCheckActivity extends AppCompatActivity {
             Date date = format.parse(dString);
             Date date1 = format.parse(validDate);
 
-            if (date.compareTo(date1) == 0) {
-                Toast.makeText(this, "Matches", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Not matches", Toast.LENGTH_SHORT).show();
-            }
+//            if (date.compareTo(date1) == 0) {
+//                Toast.makeText(this, "Matches", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(this, "Not matches", Toast.LENGTH_SHORT).show();
+//            }
+
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(date1);
+            c.add(Calendar.DATE, 1);
+            date1 = c.getTime();
+
+            String x = String.valueOf(getDateDiff(date1, date, TimeUnit.DAYS));
+            Toast.makeText(this, "" + x, Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
     }
 }
